@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 Découper dans plusieurs plans 2D des rectangles plus petis avec rotation
-# Installation
+## Installation
 
 Python 3.7  au minimum
 
@@ -14,7 +14,7 @@ $ python3.7 -m pip install matplotlib
 $ git clone https://github.com/idealsonDEV/Decoupe2D.git
 ```
 
-# Utilisation
+## Utilisation
 
 Format d'entrée:
 ```python
@@ -53,4 +53,8 @@ Show2D(nplans, mor_list)
  Imprimer le résulat
   ```python
 PrintPDF2D(nplans, mor_list)
+ ```
+## Tester
+  ```bash
+python3.7 coupe-vitre.py
  ```
