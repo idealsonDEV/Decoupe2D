@@ -33,8 +33,8 @@ plans = [
 ```
 Format de sortie
 ```python
-(2, [   # Nombre  plan utilisé
-      (0, 0, 0, 4, 3, '4x3'),  # Index , x , y, width, height, label
+(2, [   # Nombre de plan utilisé
+      (0, 0, 0, 4, 3, '4x3'),  # Index du plan , x , y, width, height, label
       (0, 0, 3, 4, 3, '3x4'), 
       (0, 4, 0, 2, 2, '2x2'), 
       (0, 4, 2, 2, 2, '2x2'), 
