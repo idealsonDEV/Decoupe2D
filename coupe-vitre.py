@@ -93,7 +93,6 @@ def main():
                 (6, 6)
                         ]
         nplans, mor_list = Solver2D(morceaux,plans)
-        print(Solver2D(morceaux,plans))
         Show2D(nplans, mor_list)
         PrintPDF2D(nplans, mor_list)
 
