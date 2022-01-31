@@ -158,63 +158,39 @@ def parse_waste(waste, maxid):
 def main():
         # Mettez les mesure en mm
         morceaux = [
-                (772, 885,"SO18089\n772x885\nGinah"),
-                (782, 895,"SO18089\n782x895\nGinah"),
-                (430, 930,"01 SO18291\n430x930\nLandy"),
-                (430, 930,"02 SO18291\n430x930\nLandy"),
-                (610, 1750,"SO18204\n610x1750\nNicolas"),
-                (990, 1993,"01 SO18204\n990x1993\nNicolas"),
-                (990, 1993,"02 SO18204\n990x1993\nNicolas"),
-                (886, 2015,"01 SO18204\n886x2015\nSarobidy"),
-                (886, 2015,"02 SO18204\n886x2015\nSarobidy"),
-                (886, 2015,"03 SO18204\n886x2015\nSarobidy"),
-                (1175, 2015,"01 SO18204\n1175x2015\nSarobidy"),
-                (1175, 2015,"02 SO18204\n1175x2015\nSarobidy"),
-                (1175, 2015,"03 SO18204\n1175x2015\nSarobidy"),
-                (1175, 2015,"04 SO18204\n1175x2015\nSarobidy"),
-                (1175, 2015,"05 SO18204\n1175x2015\nSarobidy"),
-                (1175, 2015,"06 SO18204\n1175x2015\nSarobidy"),
-                (886, 1205,"01 SO18204\n886x1205\nSarobidy"),
-                (886, 1205,"02 SO18204\n886x1205\nSarobidy"),
-                (886, 1205,"03 SO18204\n886x1205\nSarobidy"),
-                (1175, 1205,"01 SO18204\n1175x1205\nSarobidy"),
-                (1175, 1205,"02 SO18204\n1175x1205\nSarobidy"),
-                (1175, 1205,"03 SO18204\n1175x1205\nSarobidy"),
-                (1175, 1205,"04 SO18204\n1175x1205\nSarobidy"),
-                (1175, 1205,"05 SO18204\n1175x1205\nSarobidy"),
-                (1175, 1205,"06 SO18204\n1175x1205\nSarobidy"),
-                (910, 1205,"01/03 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"02/03 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"03/03 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"01/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"02/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"03/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"04/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"05/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"06/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"07/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"08/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1205,"09/09 SO18204\n910x1205\nSarobidy"),
-                (910, 1086,"01/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"02/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"03/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"04/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"05/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"06/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"07/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"08/09 SO18204\n910x1086\nSarobidy"),
-                (910, 1086,"09/09 SO18204\n910x1086\nSarobidy"),
-                (760, 1885,"01 SO18204\n760x1885\nSarobidy"),
-                (760, 1885,"02 SO18204\n760x1885\nSarobidy"),
-                (760, 1885,"03 SO18204\n760x1885\nSarobidy")
+                (1026, 881,"EMADALY\n1026x881"),
+                (1026, 881,"EMADALY\n1026x881"),
+                (1026, 881,"EMADALY\n1026x881"),
+                (1026, 881,"EMADALY\n1026x881"),
+                (1026, 876,"EMADALY\n1026x876"),
+                (1026, 876,"EMADALY\n1026x876"),
+                (1026, 876,"EMADALY\n1026x876"),
+                (1026, 876,"EMADALY\n1026x876"),
+                (1026, 883.5,"EMADALY\n1026x883,5"),
+                (1026, 883.5,"EMADALY\n1026x883,5"),
+                (1026, 871,"EMADALY\n1026x871"),
+                (1026, 871,"EMADALY\n1026x871"),
+                (1026, 851,"EMADALY\n1026x851"),
+                (1026, 851,"EMADALY\n1026x851"),
+                (1026, 846,"EMADALY\n1026x846"),
+                (1026, 846,"EMADALY\n1026x846"),
+                (1026, 866,"EMADALY\n1026x866"),
+                (1026, 866,"EMADALY\n1026x866"),
+                (1026, 868.5,"EMADALY\n1026x868,5"),
+                (1026, 868.5,"EMADALY\n1026x868,5"),
+                (1026, 886,"EMADALY\n1026x886"),
+                (1026, 886,"EMADALY\n1026x886"),
+                (1026, 836,"EMADALY\n1026x836"),
+                (1026, 836,"EMADALY\n1026x836")
                                 ]
         plans = [
                 (3300, 2140,100, 0)
                         ]
-        nplans, mor_list, waste, empty, bin_lst = Solver2D(morceaux,plans)
+        s_plans = sorted(plans, reverse=False,key=lambda r: r[0]*r[1])
+        nplans, mor_list, waste, empty, bin_lst = Solver2D(morceaux,s_plans)
         dim = (3300,2140)
         lines, space = cutline(nplans, mor_list, waste, dim)
-        newaste, maxid = parse_waste(waste, 0)
+        newaste, maxid = parse_waste(waste, 81)
         #Show2D(nplans, mor_list)
         PrintPDF2D(nplans, mor_list, waste, newaste, dim, bin_lst, lines, space)
 

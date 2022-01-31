@@ -334,6 +334,8 @@ class Rectangle(object):
 
         # Other rectangle is Right/Left from this
         if  self.bottom == other.bottom and self.height == other.height:
+            if self.width + other.width > 1250:
+                return False
             x_min = min(self.left, other.left)
             x_max = max(self.right, other.right)
             self.x = x_min

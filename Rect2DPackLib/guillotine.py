@@ -4,6 +4,11 @@ import itertools
 import operator
 
 
+section_coupe = []
+def get_section():
+    global section_coupe
+    return section_coupe
+
 class Guillotine(PackingAlgorithm):
     """Implementation of several variants of Guillotine packing algorithm
     
@@ -106,7 +111,7 @@ class Guillotine(PackingAlgorithm):
         if width < section.width:
             self._add_section(Rectangle(section.x+width, section.y,
                 section.width-width, section.height))
-        
+
 
     def _split(self, section, width, height):
         """
@@ -119,6 +124,7 @@ class Guillotine(PackingAlgorithm):
             width (int, float): Rectangle width
             height (int, float): Rectangle height
         """
+
         raise NotImplementedError
 
 
@@ -193,6 +199,7 @@ class Guillotine(PackingAlgorithm):
         # Store rectangle in the selected position
         rect = Rectangle(section.x, section.y, width, height, rid)
         self.rectangles.append(rect)
+
         return rect
 
     def fitness(self, width, height):
@@ -257,7 +264,9 @@ class GuillotineSas(Guillotine):
     algorithm.
     """
     def _split(self, section, width, height):
-        if section.width < section.height:
+        if section.height == 2140:
+            return self._split_vertical(section, width, height)
+        elif section.width < section.height:
             return self._split_horizontal(section, width, height)
         else:
             return self._split_vertical(section, width, height)
@@ -269,7 +278,9 @@ class GuillotineLas(Guillotine):
     algorithm.
     """
     def _split(self, section, width, height):
-        if section.width >= section.height:
+        if section.height == 2140:
+            return self._split_vertical(section, width, height)
+        elif section.width >= section.height:
             return self._split_horizontal(section, width, height)
         else:
             return self._split_vertical(section, width, height)
@@ -281,7 +292,9 @@ class GuillotineSlas(Guillotine):
     Guillotine algorithm.
     """
     def _split(self, section, width, height):
-        if section.width-width < section.height-height:
+        if section.height == 2140:
+            return self._split_vertical(section, width, height)
+        elif section.width-width < section.height-height:
             return self._split_horizontal(section, width, height)
         else:
             return self._split_vertical(section, width, height)
@@ -293,7 +306,9 @@ class GuillotineLlas(Guillotine):
     Guillotine algorithm.
     """
     def _split(self, section, width, height):
-        if section.width-width >= section.height-height:
+        if section.height == 2140:
+            return self._split_vertical(section, width, height)
+        elif section.width-width >= section.height-height:
             return self._split_horizontal(section, width, height)
         else:
             return self._split_vertical(section, width, height)
@@ -306,9 +321,17 @@ class GuillotineMaxas(Guillotine):
     Tries to make the rectangles more even-sized.
     """
     def _split(self, section, width, height):
-        if width*(section.height-height) <= height*(section.width-width):
+        if width >= 880:
+            self._merge = False
+        else:
+            self._merge = True
+        if section.height == 2140 and self._surface.width > 1830:
+            return self._split_vertical(section, width, height)
+        elif width*(section.height-height) <= height*(section.width-width):
+            #section_coupe.append([(height, section.x, height, section.width)])
             return self._split_horizontal(section, width, height)
         else:
+            #section_coupe.append([(width, section.y, width, section.height)])
             return self._split_vertical(section, width, height)
         
 
@@ -318,7 +341,13 @@ class GuillotineMinas(Guillotine):
     algorithm. 
     """
     def _split(self, section, width, height):
-        if width*(section.height-height) >= height*(section.width-width):
+        if width > 890:
+            self._merge = False
+        else:
+            self._merge = True
+        if section.height == 2140 and self._surface.width == 3300:
+            return self._split_vertical(section, width, height)
+        elif width*(section.height-height) >= height*(section.width-width):
             return self._split_horizontal(section, width, height)
         else:
             return self._split_vertical(section, width, height)

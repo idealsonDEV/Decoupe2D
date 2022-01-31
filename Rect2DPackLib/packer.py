@@ -1,5 +1,13 @@
 from .maxrects import MaxRectsBssf
 
+from .guillotine import GuillotineBssfSas, GuillotineBssfLas, \
+    GuillotineBssfSlas, GuillotineBssfLlas, GuillotineBssfMaxas, \
+    GuillotineBssfMinas, GuillotineBlsfSas, GuillotineBlsfLas, \
+    GuillotineBlsfSlas, GuillotineBlsfLlas, GuillotineBlsfMaxas, \
+    GuillotineBlsfMinas, GuillotineBafSas, GuillotineBafLas, \
+    GuillotineBafSlas, GuillotineBafLlas, GuillotineBafMaxas, \
+    GuillotineBafMinas
+
 import operator
 import itertools
 import collections
@@ -277,12 +285,32 @@ class PackerOnline(object):
 
         return rectangles
 
+    def waste_list(self):
+        waste = []
+        bin_count = 0
+
+        for open in self._open_bins:
+            for rect in open._sections:
+                waste.append((bin_count, rect.x, rect.y, rect.width, rect.height))
+            bin_count += 1
+
+        return waste
+
+    def empty_list(self):
+        empty = []
+        for em in self._empty_bins:
+            count = self._empty_bins[em]._count
+            width = self._empty_bins[em]._width
+            height = self._empty_bins[em]._height
+            empty.append((width,height,count))
+        return empty
+
     def bin_list(self):
         """
         Return a list of the dimmensions of the bins in use, that is closed
         or open containing at least one rectangle
         """
-        return [(b.width, b.height) for b in self]
+        return [(b.width, b.height, b.bid) for b in self]
 
     def validate_packing(self):
         for b in self:
@@ -523,7 +551,7 @@ PackingBin = Enum(["BNF", "BFF", "BBF", "Global"])
 
 def newPacker(mode=PackingMode.Offline, 
          bin_algo=PackingBin.BBF, 
-        pack_algo=MaxRectsBssf,
+        pack_algo=GuillotineBafMaxas,
         sort_algo=SORT_AREA, 
         rotation=True):
     """
